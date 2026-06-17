@@ -94,7 +94,7 @@ function App() {
             <div className="lg:col-span-2 space-y-4 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-950/50 border border-emerald-800/50 rounded-full text-xs font-mono text-emerald-400 tracking-wider uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                Developer Profile
+                Perfil Celio
               </div>
               
               <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
@@ -108,13 +108,13 @@ function App() {
               {/* Grid Metadata Profil */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 max-w-md mx-auto lg:mx-0 text-left font-mono text-xs">
                 <div className="bg-[#0b0f19]/80 border border-gray-800/60 p-3 rounded-xl">
-                  <span className="text-gray-500 block mb-1">LOCATION</span>
+                  <span className="text-gray-500 block mb-1">HELA FATIN</span>
                   <span className="text-gray-300 font-sans font-medium">
                     {profile ? profile.hela_fatin : "Timor-Leste"}
                   </span>
                 </div>
                 <div className="bg-[#0b0f19]/80 border border-gray-800/60 p-3 rounded-xl">
-                  <span className="text-gray-500 block mb-1">BIRTH DATE</span>
+                  <span className="text-gray-500 block mb-1">DATA MORIS</span>
                   <span className="text-gray-300 font-sans font-medium">
                     {profile ? profile.data_moris : "-"}
                   </span>
@@ -150,7 +150,7 @@ function App() {
                 activeTab === 'projects' ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-gray-500 hover:text-gray-300'
               }`}
             >
-              / projects_db ({projects.length})
+              / projetu ({projects.length})
             </button>
             <button
               onClick={() => setActiveTab('certificates')}
@@ -158,7 +158,7 @@ function App() {
                 activeTab === 'certificates' ? 'border-emerald-500 text-emerald-400' : 'border-transparent text-gray-500 hover:text-gray-300'
               }`}
             >
-              / cert_verify ({certificates.length})
+              / sertifikadu ({certificates.length})
             </button>
           </nav>
         </div>
@@ -168,7 +168,7 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
             {projects.length === 0 ? (
               <div className="col-span-2 text-center py-12 text-sm text-gray-500 font-mono bg-[#131926]/20 border border-gray-800/50 rounded-2xl">
-                [ Belum ada projek yang ditambahkan di Django Admin ]
+                [ Seidauk Iha Projetu ruma ne'ebe Upload ]
               </div>
             ) : (
               projects.map((project) => {
@@ -264,7 +264,7 @@ function App() {
 
         {/* ================= FOOTER ================= */}
         <footer className="text-center mt-24 pt-8 border-t border-gray-800/40 text-[10px] text-gray-600 font-mono tracking-widest uppercase">
-          &copy; 2026 Celio Sousa Silva • Engine Sync Status: OK
+          &copy; Celio Sousa Silva • Engenharia Informatica
         </footer>
 
       </div>
