@@ -23,15 +23,15 @@ dist-ssr
 *.sln
 *.sw?
 
-# Python / Django
-__pycache__/
-*.pyc
-db.sqlite3
-media/
-env/
-.env
-
-# React / Node
+# Mengabaikan folder dependensi dan build React
 node_modules/
 dist/
 .env.local
+
+# Mengabaikan database lokal dan cache Django
+db.sqlite3
+__pycache__/
+*.pyc
+media/
+env/
+.env
