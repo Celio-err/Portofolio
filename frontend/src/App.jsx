@@ -8,29 +8,33 @@ function App() {
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState('projects');
 
-  useEffect(() => {
-    // Memanggil 3 API Django sekaligus secara paralel
+ useEffect(() => {
+    // 💡 DINAMIS: Mendeteksi hostname browser tempat React berjalan (localhost atau IP hos)
+    const hostname = window.location.hostname;
+    const API_BASE_URL = `http://${hostname}:8000`;
+
+    // Memanggil 3 API Django sekaligus secara paralel menggunakan base URL dinamis
     Promise.all([
-      fetch('http://127.0.0.1:8000/api/profile/').then(res => {
+      fetch(`${API_BASE_URL}/api/profile/`).then(res => {
         if (!res.ok) throw new Error('Gagal memuat data profil');
         return res.json();
       }),
-      fetch('http://127.0.0.1:8000/api/projects/').then(res => {
+      fetch(`${API_BASE_URL}/api/projects/`).then(res => {
         if (!res.ok) throw new Error('Gagal memuat data projek');
         return res.json();
       }),
-      fetch('http://127.0.0.1:8000/api/certificates/').then(res => {
+      fetch(`${API_BASE_URL}/api/certificates/`).then(res => {
         if (!res.ok) throw new Error('Gagal memuat data sertifikat');
         return res.json();
       })
     ])
       .then(([profileData, projectsData, certificatesData]) => {
-        // Ambil baris profil pertama jika array tidak kosong
         if (profileData && profileData.length > 0) {
           setProfile(profileData[0]);
         }
         setProjects(projectsData);
         setCertificates(certificatesData);
+        setError(null); // Hapus eror jika koneksi berhasil pulih
         setLoading(false);
       })
       .catch(err => {

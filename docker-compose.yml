@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    # 💡 Perintah ini akan memastikan migrasi berjalan otomatis sebelum server Django menyala
+    command: sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+      - PYTHONPATH=/app  # 💡 Memaksa Docker mengenali folder 'core' langsung dari root /app
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
